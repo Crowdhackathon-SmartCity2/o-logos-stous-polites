@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+{% block body %}
+{% if session['logged_in'] %}
+<p>You're logged in already!</p>
+{% else %}
+
+<style>
+
+
+
+
+.button5 {border-radius: 50%;}
+
+</style>
+
+
+<form action="/registerUser" method="POST">
+	<div class="login">
+		<div class="login-screen">
+			<div class="app-title">
+				<h2>Ο λόγος στους πολίτες</h2>
+			</div>
+
+
+
+                <a type="submit" value="Ελεύθερη Είσοδος" class="btn btn-primary  button5"style="background-color: #004466;" href="/index" >Ελεύθερη Είσοδος</a>
+
+              </br></br>
+
+                <a type="submit" value="Εγγραφή" class="btn btn-primary   button5"  style="background-color: #004466;" href="/register" >Εγγραφή/Login</a>
+
+
+			    <br>
+
+
+			</div>
+		</div>
+	</div>
+</form>
+
+{% endif %}
+{% endblock %}

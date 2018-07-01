@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <script type="text/javascript">// <![CDATA[
+        function loading(){
+            $("#loading").show();
+            $("#content").hide();
+        }
+// ]]></script>
+
+  <style>
+  div#loading {
+    width: 35px;
+    height: 35px;
+    display: none;
+    background: url(/static/loadingimage.gif) no-repeat;
+    cursor: wait;
+    }
+
+
+
+
+    .vertical-align {
+      display: table-cell;
+      vertical-align: middle;
+      height: 30vh;
+    }
+
+    .button-link {
+      text-decoration: none;
+    }
+
+    .btns {
+      background-color: #ff9035;
+      background-image: -webkit-linear-gradient(-370deg, #ff5a64 0%, #faa04b 30%, #d2dc69 70%, #0ef49b 100%);
+      background-image: -webkit-linear-gradient(350deg, #ff5a64 0%, #faa04b 30%, #d2dc69 70%, #0ef49b 100%);
+      background-image: linear-gradient(100deg, #ff5a64 0%, #faa04b 30%, #d2dc69 70%, #0ef49b 100%);
+      z-index: 0;
+      height: 80px;
+      float: none;
+      margin: 0 auto;
+      width: 700px;
+      max-width: 100%;
+      border-radius: 40px;
+      display: block;
+      box-shadow: 0 2px 4px -1px rgba(25, 25, 25, 0.2);
+    }
+    .btns input {
+      display: none;
+    }
+    .btns label {
+      display: table;
+      float: left;
+      padding: 0;
+      width: 10%;
+      height: 100%;
+      margin: 0;
+      text-align: center;
+      border-left: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    .btns label:first-child {
+      border-left: none;
+      border-radius: 40px 0 0 40px;
+    }
+    .btns label:last-child {
+      border-radius: 0 40px 40px 0;
+    }
+    .btns .btn {
+      font-size: 19px;
+      cursor: pointer;
+      width: 100%;
+      display: table-cell;
+      vertical-align: middle;
+      font-weight: 300;
+      color: #FFF;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      box-shadow: inset 0 30px 20px -20px rgba(255, 255, 255, 0.15);
+      -webkit-transition: color 250ms cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 250ms cubic-bezier(0.895, 0.03, 0.685, 0.22);
+      transition: color 250ms cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 250ms cubic-bezier(0.895, 0.03, 0.685, 0.22);
+    }
+    .btns .btn:hover {
+      box-shadow: inset 0 30px 30px -20px rgba(50, 50, 50, 0.02);
+      -webkit-transition: all 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
+      transition: all 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    .btns .btn:after {
+      content: '\2714';
+      margin-left: -10px;
+      display: inline-block;
+      -webkit-transform: scale(0);
+      transform: scale(0);
+      -webkit-transition: margin 250ms cubic-bezier(0.6, -0.28, 0.735, 0.045) 100ms, -webkit-transform 250ms cubic-bezier(0.895, 0.03, 0.685, 0.22);
+      transition: margin 250ms cubic-bezier(0.6, -0.28, 0.735, 0.045) 100ms, -webkit-transform 250ms cubic-bezier(0.895, 0.03, 0.685, 0.22);
+      transition: margin 250ms cubic-bezier(0.6, -0.28, 0.735, 0.045) 100ms, transform 250ms cubic-bezier(0.895, 0.03, 0.685, 0.22);
+      transition: margin 250ms cubic-bezier(0.6, -0.28, 0.735, 0.045) 100ms, transform 250ms cubic-bezier(0.895, 0.03, 0.685, 0.22), -webkit-transform 250ms cubic-bezier(0.895, 0.03, 0.685, 0.22);
+    }
+    .btns .first {
+      border-radius: 40px 0 0 40px;
+    }
+    .btns .last {
+      border-radius: 0 40px 40px 0;
+    }
+    .btns input:checked + .btn {
+      color: #5f6982;
+      text-shadow: none;
+      background-image: -webkit-linear-gradient( bottom , rgba(25, 25, 25, 0) 65%, rgba(25, 25, 25, 0.08));
+      background-image: -webkit-linear-gradient(bottom, rgba(25, 25, 25, 0) 65%, rgba(25, 25, 25, 0.08));
+      background-image: linear-gradient(to top, rgba(25, 25, 25, 0) 65%, rgba(25, 25, 25, 0.08));
+      box-shadow: inset 0 10px 50px rgba(25, 25, 25, 0.08);
+      -webkit-transition: color 500ms cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 150ms;
+      transition: color 500ms cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 150ms;
+    }
+    .btns input:checked + .btn:after {
+      margin-left: 12px;
+      -webkit-transform: scale(1.25);
+      transform: scale(1.25);
+      -webkit-transition: -webkit-transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 250ms, margin 500ms;
+      -webkit-transition: margin 500ms, -webkit-transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 250ms;
+      transition: margin 500ms, -webkit-transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 250ms;
+      transition: transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 250ms, margin 500ms;
+      transition: transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 250ms, margin 500ms, -webkit-transform 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 250ms;
+    }
+    .fa {
+      padding: 20px;
+      font-size: 30px;
+      width: 50px;
+      text-align: center;
+      text-decoration: none;
+      margin: 5px 2px;
+    }
+
+    .fa:hover {
+        opacity: 0.7;
+    }
+
+    .fa-facebook {
+      background: #3B5998;
+      color: white;
+    }
+
+    .fa-twitter {
+      background: #55ACEE;
+      color: white;
+    }
+
+    .fa-google {
+      background: #dd4b39;
+      color: white;
+    }
+
+    .fa-linkedin {
+      background: #007bb5;
+      color: white;
+    }
+
+    .fa-youtube {
+      background: #bb0000;
+      color: white;
+    }
+
+    .fa-instagram {
+      background: #125688;
+      color: white;
+    }
+
+    .fa-pinterest {
+      background: #cb2027;
+      color: white;
+    }
+
+    .fa-snapchat-ghost {
+      background: #fffc00;
+      color: white;
+      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    }
+
+    .fa-skype {
+      background: #00aff0;
+      color: white;
+    }
+
+    .fa-android {
+      background: #a4c639;
+      color: white;
+    }
+
+    .fa-dribbble {
+      background: #ea4c89;
+      color: white;
+    }
+
+    .fa-vimeo {
+      background: #45bbff;
+      color: white;
+    }
+
+    .fa-tumblr {
+      background: #2c4762;
+      color: white;
+    }
+
+    .fa-vine {
+      background: #00b489;
+      color: white;
+    }
+
+    .fa-foursquare {
+      background: #45bbff;
+      color: white;
+    }
+
+    .fa-stumbleupon {
+      background: #eb4924;
+      color: white;
+    }
+
+    .fa-flickr {
+      background: #f40083;
+      color: white;
+    }
+
+    .fa-yahoo {
+      background: #430297;
+      color: white;
+    }
+
+    .fa-soundcloud {
+      background: #ff5500;
+      color: white;
+    }
+
+    .fa-reddit {
+      background: #ff5700;
+      color: white;
+    }
+
+    .fa-rss {
+      background: #ff6600;
+      color: white;
+    }
+
+  </style>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Ερωτηματολόγιο - Καθαριότητα</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/small-business.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Ο λόγος στους πολίτες</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+        <!--    <li class="nav-item active">
+              <a class="nav-link" href="#">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li> -->
+
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">Σχετικα</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <!-- Heading Row -->
+      <div class="row my-4">
+        <div class="col-lg-8">
+          <img class="img-fluid rounded" src="static/img/environment.jpg" alt="">
+        </div>
+        <!-- /.col-lg-8 -->
+        <div class="col-lg-4">
+          <h1>Θέλουμε να σας ακούσουμε</h1>
+        <!--  <p>Κατεβάστε το εκκαθαριστικό σας</p>
+          <a class="btn btn-primary btn-lg" href="/E1file/" onclick="loading();">Κατεβάστε το αρχειο</a>
+          <a class="btn btn-primary btn-lg" href="/E1fileView/">Δειτε το αρχειο</a> -->
+          <a href="#" class="fa fa-facebook"></a>
+          <a href="#" class="fa fa-twitter"></a>
+          <a href="#" class="fa fa-instagram"></a>
+        </div>
+        <!-- /.col-md-4 -->
+      </div>
+
+      <div class="card text-white bg-secondary my-4 text-center">
+        <div class="card-body">
+          <p class="text-white m-0">Αποκτήστε πρόσβαση σε διάφορα ερωτηματολόγια σχετικα με τον δήμο σας απλα μονο με ένα click!!</p>
+        </div>
+      </div>
+<center>
+
+
+
+  <h1>Καθαριότητα</h1>
+
+
+    </br></br>
+
+  <form action="/quest" method="POST">
+  <ul>
+  <h2>Πόσο καθαρό θεωρείτε τον δήμο σας; </h2>
+   <div class='vertical-align'>
+      <div class='btns'>
+    <label>
+      <input type="radio" class="option-input radio" name="example1" value="1" >
+      <span class='btn first'><b> Αρνητικά</b></span>
+    </input>
+    </label>
+    <label>
+          <input type="radio" class="option-input radio" name="example1" value="2">
+      <span class='btn'><b>Μάλλον Αρνητικά</b></span>
+    </input>
+    </label>
+    <label>
+     <input type="radio" class="option-input radio" name="example1" value="3">
+      <span class='btn'><b>ΔΓ/ΔΑ</b></span>
+    </input>
+    </label>
+    <label>
+     <input type="radio" class="option-input radio" name="example1" value="4">
+      <span class='btn'><b>Μάλλον Θετικά</b></span>
+    </input>
+    </label>
+    <label>
+    <input type="radio" class="option-input radio" name="example1" value="5">
+      <span class='btn'><b>Θετικά</b></span>
+    </input>
+    </label>
+    </div>
+  </div>
+  <h2>Πόσο ικανοποιημένος είστε με την συχνότητα συγκομιδής των σκουπιδιών;</h2>
+   <div class='vertical-align'>
+      <div class='btns'>
+    <label>
+      <input type="radio" class="option-input radio" name="example2" value="1">
+      <span class='btn first'><b> Αρνητικά</b></span>
+    </input>
+    </label>
+    <label>
+      <input type="radio" class="option-input radio" name="example2" value="2">
+      <span class='btn'><b>Μάλλον Αρνητικά</b></span>
+    </input>
+    </label>
+    <label>
+     <input type="radio" class="option-input radio" name="example2" value="3">
+      <span class='btn'><b>ΔΓ/ΔΑ</b></span>
+    </input>
+    </label>
+    <label>
+     <input type="radio" class="option-input radio" name="example2" value="4">
+      <span class='btn'><b>Μάλλον Θετικά</b></span>
+    </input>
+    </label>
+    <label>
+    <input type="radio" class="option-input radio" name="example2" value="5">
+      <span class='btn'><b>Θετικά</b></span>
+    </input>
+    </label>
+      </div>
+  </div>
+
+  <h2>Πιστεύετε ότι τηρούνται οι κανόνες υγιεινής (καθαροί κάδοι, καθαροί δρόμοι, καθαρές πλατείες, κλπ);</h2>
+   <div class='vertical-align'>
+      <div class='btns'>
+    <label>
+      <input type="radio" class="option-input radio" name="example3" value="1">
+      <span class='btn first'><b> Αρνητικά</b></span>
+    </input>
+    </label>
+    <label>
+          <input type="radio" class="option-input radio" name="example3" value="2">
+      <span class='btn'><b>Μάλλον Αρνητικά</b></span>
+    </input>
+    </label>
+    <label>
+     <input type="radio" class="option-input radio" name="example3" value="3">
+      <span class='btn'><b>ΔΓ/ΔΑ</b></span>
+    </input>
+    </label>
+    <label>
+     <input type="radio" class="option-input radio" name="example3" value="4">
+      <span class='btn'><b>Mάλλον Θετικά</b></span>
+    </input>
+    </label>
+    <label>
+    <input type="radio" class="option-input radio" name="example3" value="5">
+      <span class='btn'><b>Θετικά</b></span>
+    </input>
+    </label>
+      </div>
+  </div>
+
+
+    <input type="submit" value="Submit" class="btn btn-primary btn-small " >
+
+
+  </ul>
+  </form>
+
+  </center>
+
+  </div>
+  </body>
+
+</html>
