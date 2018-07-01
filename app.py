@@ -463,8 +463,6 @@ def new():
          elem.click()
          time.sleep(1)
 
-
-
          soup = BeautifulSoup(browser.page_source, "lxml")
 
          print(soup)
@@ -481,22 +479,15 @@ def new():
          code = my_headers[length-1]
 
          print(code)
-
-
-
          nomos = my_headers[length-2]
 
          print(nomos)
-
-
 
          dimos = my_headers[length-3]
 
          print(dimos)
 
          print(firstName,userPass,dimos,nomos,code)
-
-
 
          #cursor = connection.cursor()
          query = "INSERT INTO user(userName,userPass,dimos, nomos,code) VALUES(?,?,?,?,?)"
